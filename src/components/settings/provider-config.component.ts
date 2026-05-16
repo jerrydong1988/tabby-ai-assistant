@@ -107,6 +107,7 @@ export class ProviderConfigComponent implements OnInit, OnDestroy {
             icon: 'fa-server',
             defaultURL: 'http://localhost:11434/v1',
             fields: [
+                { key: 'apiKey', label: 'API Key (可选)', type: 'password', required: false },
                 { key: 'baseURL', label: 'Base URL', type: 'text', default: 'http://localhost:11434/v1', required: true, placeholder: '例如: http://localhost:11434/v1' },
                 { key: 'model', label: 'Model', type: 'text', default: 'llama3.1', required: false, placeholder: '例如: llama3.1, qwen2.5, mistral' },
                 { key: 'contextWindow', label: '上下文限制', type: 'number', default: 8192, required: false, placeholder: 'Llama 3.1: 8192' }

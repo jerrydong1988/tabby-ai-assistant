@@ -21,8 +21,8 @@ export class OllamaProviderService extends BaseAiProvider {
         ProviderCapability.COMMAND_EXPLANATION
     ];
     readonly authConfig = {
-        type: 'none' as const,
-        credentials: {}
+        type: 'bearer' as const,
+        credentials: { apiKey: '' }
     };
 
     constructor(
@@ -30,6 +30,21 @@ export class OllamaProviderService extends BaseAiProvider {
         translate: TranslateService
     ) {
         super(logger, translate);
+    }
+
+    /**
+     * 获取认证头
+     */
+    protected getAuthHeaders(): Record<string, string> {
+        const headers: Record<string, string> = {
+            'Content-Type': 'application/json'
+        };
+
+        if (this.config?.apiKey) {
+            headers['Authorization'] = `Bearer ${this.config.apiKey}`;
+        }
+
+        return headers;
     }
 
     /**
@@ -41,7 +56,7 @@ export class OllamaProviderService extends BaseAiProvider {
         try {
             const response = await fetch(`${this.getBaseURL()}/chat/completions`, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: this.getAuthHeaders(),
                 body: JSON.stringify({
                     model: this.config?.model || 'llama3.1',
                     messages: this.transformMessages(request.messages),
@@ -91,7 +106,7 @@ export class OllamaProviderService extends BaseAiProvider {
                 try {
                     const response = await fetch(`${this.getBaseURL()}/chat/completions`, {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
+                        headers: this.getAuthHeaders(),
                         body: JSON.stringify({
                             model: this.config?.model || 'llama3.1',
                             messages: this.transformMessages(request.messages),
@@ -254,7 +269,7 @@ export class OllamaProviderService extends BaseAiProvider {
     protected async sendTestRequest(request: ChatRequest): Promise<ChatResponse> {
         const response = await fetch(`${this.getBaseURL()}/chat/completions`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: this.getAuthHeaders(),
             body: JSON.stringify({
                 model: this.config?.model || 'llama3.1',
                 messages: this.transformMessages(request.messages),
