@@ -404,7 +404,7 @@ export class ProviderConfigComponent implements OnInit, OnDestroy {
             case 'glm':
                 return `${baseURL}/chat/completions`;
             default:
-                return `${baseURL}/v1/chat/completions`;
+                return `${baseURL}/chat/completions`;
         }
     }
 
