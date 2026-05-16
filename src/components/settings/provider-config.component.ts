@@ -49,7 +49,7 @@ export class ProviderConfigComponent implements OnInit, OnDestroy {
                 { key: 'apiKey', label: 'API Key', type: 'password', required: true },
                 { key: 'baseURL', label: 'Base URL', type: 'text', default: 'https://api.openai.com/v1', required: false },
                 { key: 'model', label: 'Model', type: 'text', default: 'gpt-4', required: false, placeholder: '例如: gpt-4, gpt-4-turbo, gpt-3.5-turbo' },
-                { key: 'contextWindow', label: '上下文限制', type: 'number', default: 128000, required: false, placeholder: 'GPT-4: 128000, GPT-3.5: 16385' }
+                { key: 'contextWindow', label: '上下文限制', type: 'text', default: '128000', required: false, placeholder: 'GPT-4: 128000, GPT-3.5: 16385' }
             ]
         },
         'anthropic': {
@@ -60,7 +60,7 @@ export class ProviderConfigComponent implements OnInit, OnDestroy {
                 { key: 'apiKey', label: 'API Key', type: 'password', required: true },
                 { key: 'baseURL', label: 'Base URL', type: 'text', default: 'https://api.anthropic.com', required: false },
                 { key: 'model', label: 'Model', type: 'text', default: 'claude-3-sonnet-20240229', required: false, placeholder: '例如: claude-3-opus, claude-3-sonnet' },
-                { key: 'contextWindow', label: '上下文限制', type: 'number', default: 200000, required: false, placeholder: 'Claude 3: 200000' }
+                { key: 'contextWindow', label: '上下文限制', type: 'text', default: '200000', required: false, placeholder: 'Claude 3: 200000' }
             ]
         },
         'minimax': {
@@ -71,7 +71,7 @@ export class ProviderConfigComponent implements OnInit, OnDestroy {
                 { key: 'apiKey', label: 'API Key', type: 'password', required: true },
                 { key: 'baseURL', label: 'Base URL', type: 'text', default: 'https://api.minimaxi.com/anthropic', required: false },
                 { key: 'model', label: 'Model', type: 'text', default: 'MiniMax-M2', required: false, placeholder: '例如: MiniMax-M2, MiniMax-M2.1' },
-                { key: 'contextWindow', label: '上下文限制', type: 'number', default: 128000, required: false, placeholder: 'MiniMax-M2: 128000' }
+                { key: 'contextWindow', label: '上下文限制', type: 'text', default: '128000', required: false, placeholder: 'MiniMax-M2: 128000' }
             ]
         },
         'glm': {
@@ -82,7 +82,7 @@ export class ProviderConfigComponent implements OnInit, OnDestroy {
                 { key: 'apiKey', label: 'API Key', type: 'password', required: true },
                 { key: 'baseURL', label: 'Base URL', type: 'text', default: 'https://open.bigmodel.cn/api/paas/v4', required: false },
                 { key: 'model', label: 'Model', type: 'text', default: 'glm-4', required: false, placeholder: '例如: glm-4, glm-4-air, glm-4-flash' },
-                { key: 'contextWindow', label: '上下文限制', type: 'number', default: 128000, required: false, placeholder: 'GLM-4: 128000' }
+                { key: 'contextWindow', label: '上下文限制', type: 'text', default: '128000', required: false, placeholder: 'GLM-4: 128000' }
             ]
         },
         'openai-compatible': {
@@ -94,7 +94,7 @@ export class ProviderConfigComponent implements OnInit, OnDestroy {
                 { key: 'baseURL', label: 'Base URL', type: 'text', default: '', required: true, placeholder: '例如: https://api.deepseek.com/v1' },
                 { key: 'model', label: 'Model', type: 'text', default: '', required: true, placeholder: '例如: deepseek-chat, gpt-3.5-turbo' },
                 { key: 'disableStreaming', label: '禁用流式响应', type: 'checkbox', default: false, required: false, placeholder: '如果站点不支持流式响应，请勾选此项' },
-                { key: 'contextWindow', label: '上下文限制', type: 'number', default: 128000, required: false, placeholder: '根据模型设置' }
+                { key: 'contextWindow', label: '上下文限制', type: 'text', default: '128000', required: false, placeholder: '根据模型设置' }
             ]
         }
     };
@@ -110,7 +110,7 @@ export class ProviderConfigComponent implements OnInit, OnDestroy {
                 { key: 'apiKey', label: 'API Key (可选)', type: 'password', required: false },
                 { key: 'baseURL', label: 'Base URL', type: 'text', default: 'http://localhost:11434/v1', required: true, placeholder: '例如: http://localhost:11434/v1' },
                 { key: 'model', label: 'Model', type: 'text', default: 'llama3.1', required: false, placeholder: '例如: llama3.1, qwen2.5, mistral' },
-                { key: 'contextWindow', label: '上下文限制', type: 'number', default: 8192, required: false, placeholder: 'Llama 3.1: 8192' }
+                { key: 'contextWindow', label: '上下文限制', type: 'text', default: '8192', required: false, placeholder: 'Llama 3.1: 8192' }
             ]
         },
         'vllm': {
@@ -122,7 +122,7 @@ export class ProviderConfigComponent implements OnInit, OnDestroy {
                 { key: 'baseURL', label: 'Base URL', type: 'text', default: 'http://localhost:8000/v1', required: true, placeholder: '例如: http://localhost:8000/v1' },
                 { key: 'apiKey', label: 'API Key (可选)', type: 'password', required: false },
                 { key: 'model', label: 'Model', type: 'text', default: 'meta-llama/Llama-3.1-8B', required: false, placeholder: 'HuggingFace 模型路径' },
-                { key: 'contextWindow', label: '上下文限制', type: 'number', default: 8192, required: false, placeholder: '根据模型实际配置设置' }
+                { key: 'contextWindow', label: '上下文限制', type: 'text', default: '8192', required: false, placeholder: '根据模型实际配置设置' }
             ]
         }
     };
